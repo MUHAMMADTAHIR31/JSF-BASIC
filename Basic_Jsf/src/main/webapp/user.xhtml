@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="https://www.w3.org/1999/xhtml"
+    xmlns:ui="https://java.sun.com/jsf/facelets"
+    xmlns:h="https://java.sun.com/jsf/html"
+    xmlns:f="https://java.sun.com/jsf/core">
+    
+<h:head>
+  <title>User Information System</title>
+</h:head>
+ 
+<h:body>
+  <h:form>
+    <h2>Employee Information System</h2>
+        <table>
+      <tr>
+        <td>First Name:</td>
+        <td>
+          <h:inputText label="First Name"
+                       id="username" value="#{userBean.firstName}"
+                       required="true"/>
+                       <h:message for="username" style="color: red"/>
+        </td>
+      </tr>
+      
+       <tr>
+        <td>Father Name:</td>
+        <td>
+          <h:inputText label="Father Name"
+                       id="fname" value="#{userBean.fatherName}"
+                       required="true"/>
+                       <h:message for="fname" style="color: red"/>
+        </td>
+      </tr>     
+            
+      <tr>
+        <td>Email:</td>
+        <td>
+          <h:inputText label="email"
+                       id="email" value="#{userBean.email}"
+                       required="true" validator="#{userBean.validateEmail}"/>
+                       <h:message for="email" style="color: red"/>
+        </td>
+      </tr>      
+       
+       <tr>
+        <td>Password:</td>
+        <td>
+          <h:inputSecret label="Password"
+                id="password" value="#{userBean.password}"
+                required="true"/>
+            <h:message for="password" style="color: red"/>
+        </td>
+      </tr>     
+ 
+      <tr>
+        <td>Gender:</td>
+        <td>
+          <h:selectOneRadio label="Gender"
+                            id="gender" value="#{userBean.gender}" required="true">
+            <f:selectItem itemLabel="Male" itemValue="male" />
+            <f:selectItem itemLabel="Female" itemValue="female" />
+          </h:selectOneRadio>
+        <h:message for="gender" style="color: red"/>             
+        </td>
+      </tr>
+       
+      <tr>
+        <td>Date of Birth:</td>
+        <td>
+          <h:inputText label="Date of Birth"
+                       id="dob" value="#{userBean.dobDate}" required="true">
+            <f:convertDateTime pattern="MM-dd-yy" />
+          </h:inputText> (mm-dd-yy)
+          <h:message for="dob" style="color: red"/>
+        </td>
+      </tr>
+       
+      <tr>
+        <td>Address:</td>
+        <td>
+          <h:inputText label="Address"
+                       id="address" value="#{userBean.address}"
+                       required="true"/>
+          <h:message for="address" style="color: red"/>
+        </td>
+      </tr>
+       
+      <tr>
+        <td>Mobile Number:</td>
+        <td>
+          <h:inputText label="Mobile Number"
+                       id="mobileno" value="#{userBean.mobileNumber}" required="true">
+          </h:inputText>
+          <h:message for="mobileno" style="color: red"/>
+        </td>
+      </tr>
+       
+             
+      <tr>
+        <td>Job:</td>
+        <td>
+          <h:selectOneMenu label="Job"
+                           value="#{userBean.jobType}">
+            <f:selectItem itemLabel="Part Time" itemValue="partTime" />
+            <f:selectItem itemLabel="Full time" itemValue="fullTime" />
+          </h:selectOneMenu>
+        </td>
+      </tr>
+    
+    <tr>
+        <td>Language you Know:</td>
+        <td>
+            <h:selectManyCheckbox value="#{userBean.language}">
+                <f:selectItems value="#{userBean.language}" />
+   	</h:selectManyCheckbox>
+        </td>
+      </tr>
+       
+    </table>
+    <p><h:commandButton value="Submit" action="confirm" /></p>
+  </h:form>
+</h:body>
+</html>
